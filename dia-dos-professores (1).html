@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feliz Dia dos Professores 💜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#06030d; --ink:#f4ebff; --mut:#b7a3d6; --p1:#a855f7; --p2:#7c3aed; --p3:#d8b4fe; --card:#130a24; --line:#2e1a52;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#06030d;--ink:#f4ebff}}
+:root[data-theme="dark"]{--bg:#06030d;--ink:#f4ebff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main,footer{position:relative;z-index:1}
+section{min-height:80vh;padding:12vh 6vw;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero{min-height:100vh;cursor:crosshair}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,9vw,7rem);line-height:1.02;letter-spacing:-.02em;max-width:14ch}
+h1 em{font-style:italic;font-weight:700;background:linear-gradient(100deg,var(--p3),var(--p1) 55%,var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:-.01em;margin-bottom:.6rem}
+.sub{color:var(--mut);max-width:46ch;margin:1.4rem auto 2.2rem;font-size:1.1rem}
+#nome{border-bottom:2px dashed var(--p1);outline:none;padding:0 .2em;cursor:text}
+#nome:focus{background:rgba(168,85,247,.15);border-radius:6px}
+.dica{font-size:.85rem;color:var(--mut);margin-top:1rem;opacity:.8}
+button{font-family:var(--sans);cursor:pointer;border:0;color:var(--ink)}
+.cta{background:linear-gradient(120deg,var(--p2),var(--p1));padding:1rem 2.2rem;border-radius:999px;font-size:1.05rem;font-weight:600;box-shadow:0 0 40px rgba(168,85,247,.45);transition:transform .2s,box-shadow .2s}
+.cta:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 70px rgba(168,85,247,.75)}
+:focus-visible{outline:3px solid var(--p3);outline-offset:3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;width:min(1000px,100%);margin-top:2.2rem}
+.flip{perspective:900px;height:240px;background:none;padding:0}
+.in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:22px;padding:1.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.7rem}
+.front{background:var(--card);border:1px solid var(--line)}
+.front b{font-size:2.6rem}
+.front span{font-family:var(--serif);font-size:1.45rem}
+.back{background:linear-gradient(150deg,var(--p2),#2a0d54);transform:rotateY(180deg);font-size:1.02rem;line-height:1.5}
+.meter{width:min(560px,100%);margin-top:2rem}
+input[type=range]{width:100%;accent-color:var(--p1);height:34px}
+#pct{font-family:var(--serif);font-size:clamp(3rem,10vw,6rem);color:var(--p3);line-height:1}
+#msg{color:var(--mut);min-height:1.6em;margin-top:.6rem}
+.mural{width:min(720px,100%)}
+textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:16px;color:var(--ink);font:inherit;padding:1rem;resize:vertical;min-height:170px;margin-top:1.4rem;line-height:1.6}
+textarea:focus{outline:2px solid var(--p1)}
+.notes{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem;min-height:90px}
+.note{background:#e9d5ff;color:#1a0933;padding:1rem 1.2rem;border-radius:6px;max-width:380px;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--serif);font-style:italic;box-shadow:0 10px 30px rgba(168,85,247,.35);animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{transform:scale(.2) rotate(-12deg);opacity:0}}
+.vazio{color:var(--mut);font-size:.95rem}
+.carta{max-width:60ch;text-align:left;font-family:var(--serif);font-size:clamp(1.1rem,2.6vw,1.5rem);line-height:1.7;min-height:11em}
+.carta::after{content:"▍";color:var(--p1);animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.heart{font-size:4rem;background:none;margin-top:2rem;animation:beat 1.6s ease-in-out infinite;filter:drop-shadow(0 0 20px var(--p1))}
+@keyframes beat{50%{transform:scale(1.18)}}
+footer{text-align:center;padding:3rem 1rem;color:var(--mut);font-size:.9rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<main>
+  <section class="hero">
+    <h1>Feliz Dia dos <em>Professores</em></h1>
+    <p class="sub">Para <span id="nome" contenteditable="true" spellcheck="false" aria-label="Nome da homenageada">Sabrina</span>, com muito carinho. Passe o mouse (ou o dedo) pela tela e deixe um rastro de giz.</p>
+    <button class="cta" id="abrir">Abrir minha surpresa</button>
+    <p class="dica">Clique no nome para trocar.</p>
+  </section>
+
+  <section id="qual">
+    <h2>Coisas que a gente aprende com você</h2>
+    <p class="sub" style="margin-bottom:0">Toque nas cartas para virar.</p>
+    <div class="grid">
+      <button class="flip"><div class="in"><div class="face front"><b>🌟</b><span>Inspiração</span></div><div class="face back">Você faz a gente querer dar o nosso melhor.</div></div></button>
+      <button class="flip"><div class="in"><div class="face front"><b>🧭</b><span>Direção</span></div><div class="face back">Quando a coisa complica, você ajuda a gente a enxergar o caminho.</div></div></button>
+      <button class="flip"><div class="in"><div class="face front"><b>🌱</b><span>Paciência</span></div><div class="face back">Você respeita o tempo de cada um e não desiste de ninguém.</div></div></button>
+      <button class="flip"><div class="in"><div class="face front"><b>🔥</b><span>Energia</span></div><div class="face back">Sua energia deixa o dia de todo mundo mais leve.</div></div></button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Medidor de pessoa incrível</h2>
+    <p class="sub" style="margin:.4rem auto 0">Arraste o controle até o fim.</p>
+    <div class="meter">
+      <div id="pct">0%</div>
+      <input type="range" id="rg" min="0" max="100" value="0" aria-label="Medidor">
+      <p id="msg">Calma, estamos medindo…</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="mural">
+      <h2>Mural de recados</h2>
+      <p class="sub" style="margin:.4rem auto 0">Escreva um recado e cole no mural.</p>
+      <textarea id="txt" maxlength="800" rows="6" placeholder="Escreva aqui o que você quer dizer… pode ser uma mensagem longa, uma lembrança, um agradecimento."></textarea>
+      <p class="dica" id="cont">0 / 800</p>
+      <button class="cta" id="colar" style="margin-top:1rem">Colar no mural</button>
+      <div class="notes" id="notes"><span class="vazio" id="vazio">Nenhum recado ainda. O primeiro pode ser o seu.</span></div>
+    </div>
+  </section>
+
+  <section id="cartaSec">
+    <div class="carta" id="carta" aria-live="polite"></div>
+    <button class="heart" id="heart" aria-label="Soltar corações">💜</button>
+    <p class="dica">Toque no coração.</p>
+  </section>
+</main>
+<footer>Feito com carinho · 15 de outubro</footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('fx'),cx=cv.getContext('2d'),W,H,dpr=Math.min(devicePixelRatio||1,2);
+  function rs(){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+  rs();addEventListener('resize',rs);
+  var stars=[],chalk=[],bits=[],m={x:-999,y:-999};
+  for(var i=0;i<70;i++)stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.8+.6});
+  function pt(e){var t=e.touches?e.touches[0]:e;m.x=t.clientX;m.y=t.clientY;
+    for(var k=0;k<2;k++)chalk.push({x:m.x+(Math.random()-.5)*8,y:m.y+(Math.random()-.5)*8,vx:(Math.random()-.5)*.6,vy:Math.random()*.6,l:1,r:Math.random()*3+1})}
+  addEventListener('mousemove',pt);addEventListener('touchmove',pt,{passive:true});addEventListener('touchstart',pt,{passive:true});
+  var cols=['#a855f7','#d8b4fe','#7c3aed','#f5d0fe','#ffffff'];
+  function burst(x,y,n){for(var i=0;i<n;i++){var a=Math.random()*6.283,s=Math.random()*9+3;
+    bits.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-3,l:1,w:Math.random()*7+3,c:cols[i%5],rot:Math.random()*6})}}
+  window.burst=burst;
+  function loop(){
+    cx.clearRect(0,0,W,H);
+    stars.forEach(function(s,i){
+      var dx=s.x-m.x,dy=s.y-m.y,d=Math.hypot(dx,dy);
+      if(d<130){s.x+=dx/d*2.2;s.y+=dy/d*2.2}
+      s.x+=s.vx;s.y+=s.vy;
+      if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;
+      cx.fillStyle='rgba(216,180,254,.8)';cx.beginPath();cx.arc(s.x,s.y,s.r,0,6.283);cx.fill();
+      for(var j=i+1;j<stars.length;j++){var o=stars[j],q=Math.hypot(s.x-o.x,s.y-o.y);
+        if(q<110){cx.strokeStyle='rgba(168,85,247,'+(.28*(1-q/110))+')';cx.beginPath();cx.moveTo(s.x,s.y);cx.lineTo(o.x,o.y);cx.stroke()}}
+    });
+    for(var i=chalk.length-1;i>=0;i--){var c=chalk[i];c.x+=c.vx;c.y+=c.vy;c.l-=.018;
+      if(c.l<=0){chalk.splice(i,1);continue}
+      cx.fillStyle='rgba(233,213,255,'+(c.l*.7)+')';cx.shadowColor='#a855f7';cx.shadowBlur=14;
+      cx.beginPath();cx.arc(c.x,c.y,c.r*c.l,0,6.283);cx.fill()}
+    cx.shadowBlur=0;
+    for(var i=bits.length-1;i>=0;i--){var b=bits[i];b.x+=b.vx;b.y+=b.vy;b.vy+=.22;b.vx*=.985;b.l-=.01;b.rot+=.15;
+      if(b.l<=0){bits.splice(i,1);continue}
+      cx.save();cx.globalAlpha=b.l;cx.translate(b.x,b.y);cx.rotate(b.rot);cx.fillStyle=b.c;cx.fillRect(-b.w/2,-b.w/4,b.w,b.w/2);cx.restore()}
+    requestAnimationFrame(loop)}
+  loop();
+
+  document.getElementById('abrir').addEventListener('click',function(e){
+    burst(e.clientX,e.clientY,120);
+    setTimeout(function(){document.getElementById('qual').scrollIntoView({behavior:'smooth'})},700)});
+
+  document.querySelectorAll('.flip').forEach(function(f){f.addEventListener('click',function(e){
+    f.classList.toggle('on');if(f.classList.contains('on'))burst(e.clientX,e.clientY,25)})});
+
+  var rg=document.getElementById('rg'),pct=document.getElementById('pct'),msg=document.getElementById('msg');
+  var fr=[[0,'Calma, estamos medindo…'],[25,'Já passou da média.'],[50,'Acho que o medidor vai quebrar…'],[75,'Nunca vi um número tão alto.'],[100,'Não cabe em porcentagem. 💜']];
+  var done=false;
+  rg.addEventListener('input',function(){var v=+rg.value;pct.textContent=v>=100?'∞':v+'%';
+    var t=fr[0][1];fr.forEach(function(f){if(v>=f[0])t=f[1]});msg.textContent=t;
+    if(v>=100&&!done){done=true;burst(W/2,H/2,160)}if(v<100)done=false});
+
+  var txt=document.getElementById('txt'),notes=document.getElementById('notes'),vz=document.getElementById('vazio');
+  function colar(){var t=txt.value.trim();if(!t)return;
+    if(vz){vz.remove();vz=null}
+    var n=document.createElement('div');n.className='note';n.textContent=t;
+    n.style.transform='rotate('+((Math.random()*10-5).toFixed(1))+'deg)';
+    notes.appendChild(n);txt.value='';cont.textContent='0 / 800';var r=n.getBoundingClientRect();burst(r.left+r.width/2,r.top,40)}
+  var cont=document.getElementById('cont');
+  txt.addEventListener('input',function(){cont.textContent=txt.value.length+' / 800'});
+  document.getElementById('colar').addEventListener('click',colar);
+  var seed=document.createElement('div');seed.className='note';
+  seed.textContent='Ser uma boa chefe, uma boa mãe, uma boa amiga, uma boa esposa e uma boa professora não é para qualquer pessoa, mas você faz parecer fácil...\n\nE o mais bonito é que você faz isso com leveza. Com você por perto, a gente aprende que dá para ser firme e gentil ao mesmo tempo, e que um dia puxado fica mais fácil quando tem alguém que escuta e acredita na gente.\n\nHoje eu queria que você recebesse de volta, em dobro, todo o carinho que dá a todo mundo. Feliz Dia dos Professores, Sabrina! 💜';
+  seed.style.transform='rotate(-1.5deg)';notes.appendChild(seed);
+  if(vz){vz.remove();vz=null}
+
+  var nome=document.getElementById('nome');
+  var carta=document.getElementById('carta'),typed=false;
+  function escreve(){
+    var N=nome.textContent.trim()||'Sabrina';
+    var s=N+', ter você por perto faz muita diferença. Você ensina com paciência, escuta com atenção e se importa de verdade com as pessoas. Minha gratidão por tudo, sempre. Feliz Dia dos Professores! 💜';
+    var i=0;(function t(){carta.textContent=s.slice(0,i++);if(i<=s.length)setTimeout(t,32)})()}
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!typed){typed=true;escreve()}})},{threshold:.5}).observe(document.getElementById('cartaSec'));
+
+  var h=document.getElementById('heart');
+  h.addEventListener('click',function(e){burst(e.clientX,e.clientY,90)});
+  nome.addEventListener('keydown',function(e){if(e.key==='Enter')e.preventDefault()});
+})();
+</script>
+</body>
+</html>
